@@ -4,11 +4,11 @@ on:
   pull_request:
   push:
     branches:
-      - "*"
+      - "master"
 
 jobs:
   test:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     env:
       MIX_ENV: test
     strategy:
@@ -16,21 +16,21 @@ jobs:
       matrix:
         include:
           - pair:
-              elixir: 1.7.4
-              otp: 19.3.6.13
+              elixir: "1.13"
+              otp: "22"
           - pair:
-              elixir: 1.14.3
-              otp: 25.2.2
+              elixir: "1.17"
+              otp: "27"
             lint: lint
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - uses: erlef/setup-beam@v1
         with:
           otp-version: ${{matrix.pair.otp}}
           elixir-version: ${{matrix.pair.elixir}}
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         with:
           path: |
             deps

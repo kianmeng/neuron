@@ -9,7 +9,7 @@ defmodule Neuron.Mixfile do
       app: :neuron,
       description: "A GraphQL client for elixir.",
       version: @version,
-      elixir: "~> 1.7",
+      elixir: "~> 1.13",
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
       test_coverage: [tool: Coverex.Task],
@@ -18,7 +18,7 @@ defmodule Neuron.Mixfile do
       deps: deps(),
       docs: docs(),
       dialyzer: [
-        plt_add_deps: :transitive,
+        plt_add_deps: :add_tree,
         plt_add_apps: [:mix],
         plt_file: {:no_warn, "priv/plts/dialyzer.plt"}
       ]

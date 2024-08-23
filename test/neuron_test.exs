@@ -47,7 +47,7 @@ defmodule NeuronTest do
       test "it takes all configs as arguments using #{json_library}" do
         json_library = unquote(json_library)
         url = "www.example.com/another/graph"
-        headers = ["X-test-header": 'my_header']
+        headers = ["X-test-header": "my_header"]
         connection_opts = [timeout: 50_000]
 
         with_mock Connection.Http,
